@@ -4,20 +4,21 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-/**可用于监视从中流过的元素
+/**
+ * 用于监视当前桥梁节点中走过的元素
  * @Author: 王亚奇
  * @Date: 2019-05-08 19:16
  * @Version 1.0
  */
-public class SingleElementMonitor<T> extends AbstractSingleElement<T> {
+public class BridgeNodeMonitor<T> extends Bridge<T> {
     private Consumer<T> consumer;
 
     /**
-     * 通过构造方法来创建数据源
+     * 通过预消费者来创建桥梁节点
      * @param origin
      * @param consumer
      */
-    public SingleElementMonitor(AbstractSingleElement<T> origin, Consumer<T> consumer) {
+    public BridgeNodeMonitor(Bridge<T> origin, Consumer<T> consumer) {
         super(origin);
         this.consumer = Objects.requireNonNull(consumer);
     }
@@ -27,10 +28,11 @@ public class SingleElementMonitor<T> extends AbstractSingleElement<T> {
      * @return
      */
     @Override
-    public Supplier<T> touch() {
-        T t = origin.touch().get();
-        Objects.requireNonNull(t);
-        consumer.accept(t);
+    public Supplier<T> trigger() {
+        T t = origin.trigger().get();
+        if (t != null){
+            consumer.accept(t);
+        }
         return () -> t;
     }
 

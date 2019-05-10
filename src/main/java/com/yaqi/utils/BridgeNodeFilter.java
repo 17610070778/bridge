@@ -5,30 +5,28 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 /**
+ * 用于过滤从当前桥梁节点中通过的元素是否符合要求
  * @Author: 王亚奇
  * @Date: 2019-05-08 19:15
  * @Version 1.0
  */
-public class SingleElementFilter<T> extends AbstractSingleElement<T> {
+public class BridgeNodeFilter<T> extends Bridge<T> {
     private Predicate<T> predicate;
 
     /**
-     * 通过构造方法来创建对象
+     * 使用断言来判断桥梁中通过的元素
      * @param origin
      * @param predicate
      */
-    public SingleElementFilter(AbstractSingleElement<T> origin, Predicate<T> predicate) {
+    public BridgeNodeFilter(Bridge<T> origin, Predicate<T> predicate) {
         super(origin);
         this.predicate = Objects.requireNonNull(predicate);
     }
 
-    /**
-     * 按照传入的规则来过滤元素
-     * @return
-     */
+
     @Override
-    public Supplier<T> touch() {
-        T t = origin.touch().get();
+    public Supplier<T> trigger() {
+        T t = origin.trigger().get();
         return () -> predicate.test(t) ? t : null;
     }
 

@@ -8,6 +8,26 @@
     <artifactId>sinleElement</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-
-
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+    <build>
+        <finalName>singleElement</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <!-- maven默认打包的时候是按照setting里面设置的，默认1.5，当前项目是1.8 所以报错
+                ①修改maven setting配置文件，将等级升为1.8；
+                ②引入maven插件将等级升为1.8
+                这样的话，就不会因为等级报错-->
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
