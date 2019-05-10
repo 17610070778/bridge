@@ -12,7 +12,7 @@ import java.util.function.Supplier;
  */
 public class BridgeNodeMap<R, T> extends BridgeMap<T, R> {
 
-    private Function<R, T> mapper;
+    private final Function<R, T> mapper;
 
 
     /**

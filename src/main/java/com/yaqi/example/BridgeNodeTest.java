@@ -29,6 +29,7 @@ public class BridgeNodeTest {
                 // 过滤数据
                 .filter(i -> i > 1000)
                 .ifEmptySwitch(() -> 1)
+                // 异常处理
                 .onErrorMapElement(ex -> ex instanceof RuntimeException, () -> 1)
                 .trigger()
                 .get();

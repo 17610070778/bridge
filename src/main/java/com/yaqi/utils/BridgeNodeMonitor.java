@@ -11,7 +11,7 @@ import java.util.function.Supplier;
  * @Version 1.0
  */
 public class BridgeNodeMonitor<T> extends Bridge<T> {
-    private Consumer<T> consumer;
+    private final Consumer<T> consumer;
 
     /**
      * 通过预消费者来创建桥梁节点

@@ -11,7 +11,7 @@ import java.util.function.Supplier;
  * @Version 1.0
  */
 public class BridgeNodeFilter<T> extends Bridge<T> {
-    private Predicate<T> predicate;
+    private final Predicate<T> predicate;
 
     /**
      * 使用断言来判断桥梁中通过的元素

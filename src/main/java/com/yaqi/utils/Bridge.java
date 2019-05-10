@@ -49,7 +49,7 @@ public abstract class Bridge<T> extends BridgeBuild<T> implements BridgeNodeTrig
     }
 
     /**
-     * 用于监视当前桥梁节点之前的桥梁节点出否出现过错误，出错则做出响应的errMap动作
+     * 用于监视当前桥梁节点之前的桥梁节点出否出现过错误，出错则做出相应的errMap动作
      * @param predicate
      * @param errMap
      * @return
@@ -58,7 +58,31 @@ public abstract class Bridge<T> extends BridgeBuild<T> implements BridgeNodeTrig
         return new BridgeNodeErrorMap<>(this, predicate, errMap);
     }
 
+    /**
+     * 重载以上方法
+     * @param predicate
+     * @param t
+     * @return
+     */
+    public BridgeNodeErrorMap<T> onErrorMapElement(Predicate<? super Throwable> predicate, T t){
+        return new BridgeNodeErrorMap<>(this, predicate, () -> t);
+    }
+
+    /**
+     * 如果通过当前桥梁节点入口的元素为null，则桥梁节点出口的元素就是生成器生成的元素
+     * @param switchSupplier
+     * @return
+     */
     public BridgeNodeIfEmptySwitch<T> ifEmptySwitch(Supplier<T> switchSupplier){
         return new BridgeNodeIfEmptySwitch<>(this, switchSupplier);
+    }
+
+    /**
+     * 重载以上方法
+     * @param t
+     * @return
+     */
+    public BridgeNodeIfEmptySwitch<T> ifEmptySwitch(T t){
+        return new BridgeNodeIfEmptySwitch<>(this, () -> t);
     }
 }

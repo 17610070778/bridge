@@ -9,7 +9,7 @@ import java.util.function.Supplier;
  * @date 2019/5/10 13:56
  */
 public class BridgeNodeIfEmptySwitch<T> extends Bridge<T> {
-    private Supplier<T> switchSupplier;
+    private final Supplier<T> switchSupplier;
     protected BridgeNodeIfEmptySwitch(Bridge<T> origin, Supplier<T> switchSupplier) {
         super(origin);
         this.switchSupplier = Objects.requireNonNull(switchSupplier);

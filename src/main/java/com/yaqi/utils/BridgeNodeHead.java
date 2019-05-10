@@ -10,7 +10,7 @@ import java.util.function.Supplier;
  * @Version 1.0
  */
 public class BridgeNodeHead<T> extends Bridge<T> {
-    private Supplier<T> supplier;
+    private final Supplier<T> supplier;
 
     /**
      * 使用生成器，来创建数据源
