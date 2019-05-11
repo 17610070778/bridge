@@ -19,7 +19,7 @@ public abstract class BridgeBuild<T> {
      * @return
      */
     public static <T> BridgeNodeHead<T> from(T t) {
-        return from(() -> Objects.requireNonNull(t));
+        return from(() -> Objects.requireNonNull(t, "t 不能为空"));
     }
 
     /**

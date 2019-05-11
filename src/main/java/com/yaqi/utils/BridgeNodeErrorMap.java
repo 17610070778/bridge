@@ -20,7 +20,7 @@ public class BridgeNodeErrorMap<T> extends Bridge<T> {
     protected BridgeNodeErrorMap(Bridge<T> origin, Predicate<? super Throwable> predicate, Supplier<T> errMap) {
         super(origin);
         this.errMap = Objects.requireNonNull(errMap);
-        this.predicate = Objects.requireNonNull(predicate);
+        this.predicate = Objects.requireNonNull(predicate, "predicate 不能为空");
     }
 
     @Override

@@ -18,12 +18,12 @@ public class BridgeNodeHead<T> extends Bridge<T> {
      */
     public BridgeNodeHead(Supplier<T> supplier){
         super(null);
-        this.supplier = Objects.requireNonNull(supplier);
+        this.supplier = Objects.requireNonNull(supplier, "supplier 不能为空");
     }
 
     @Override
     public Supplier trigger() {
-        return () -> Objects.requireNonNull(supplier.get());
+        return () -> Objects.requireNonNull(supplier.get(), "桥梁头节点的值不能为空");
     }
 
 

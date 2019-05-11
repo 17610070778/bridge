@@ -22,7 +22,7 @@ public class BridgeNodeMap<R, T> extends BridgeMap<T, R> {
      */
     public BridgeNodeMap(Bridge<R> origin, Function<R, T> mapper) {
         super(origin);
-        this.mapper = Objects.requireNonNull(mapper);
+        this.mapper = Objects.requireNonNull(mapper, "mapper 不能为空");
     }
 
 

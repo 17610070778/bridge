@@ -12,7 +12,7 @@ public class BridgeNodeIfEmptySwitch<T> extends Bridge<T> {
     private final Supplier<T> switchSupplier;
     protected BridgeNodeIfEmptySwitch(Bridge<T> origin, Supplier<T> switchSupplier) {
         super(origin);
-        this.switchSupplier = Objects.requireNonNull(switchSupplier);
+        this.switchSupplier = Objects.requireNonNull(switchSupplier, "switchSupplier 不能为空");
     }
 
     @Override

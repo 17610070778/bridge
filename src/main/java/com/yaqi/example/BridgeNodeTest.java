@@ -28,10 +28,13 @@ public class BridgeNodeTest {
                 .map(s -> 1234)
                 // 过滤数据
                 .filter(i -> i > 1000)
+                // 如果数据为null，转换为1
                 .ifEmptySwitch(() -> 1)
-                // 异常处理
+                // 如果发生除零异常，将桥梁中的数据转换为1
                 .onErrorMapElement(ex -> ex instanceof RuntimeException, () -> 1)
+                // 触发桥梁内的数据走动
                 .trigger()
+                // 获取桥梁中的数据
                 .get();
         // 打印结果为1234
         System.out.println(integer);

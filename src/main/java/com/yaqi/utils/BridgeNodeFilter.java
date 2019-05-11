@@ -20,7 +20,7 @@ public class BridgeNodeFilter<T> extends Bridge<T> {
      */
     public BridgeNodeFilter(Bridge<T> origin, Predicate<T> predicate) {
         super(origin);
-        this.predicate = Objects.requireNonNull(predicate);
+        this.predicate = Objects.requireNonNull(predicate, "predicate 不能为空");
     }
 
 

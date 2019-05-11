@@ -20,7 +20,7 @@ public class BridgeNodeMonitor<T> extends Bridge<T> {
      */
     public BridgeNodeMonitor(Bridge<T> origin, Consumer<T> consumer) {
         super(origin);
-        this.consumer = Objects.requireNonNull(consumer);
+        this.consumer = Objects.requireNonNull(consumer, "consumer 不能为空");
     }
 
     /**
