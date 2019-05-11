@@ -5,14 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.yaqi</groupId>
-    <artifactId>sinleElement</artifactId>
+    <artifactId>bridge</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
     <build>
-        <finalName>singleElement</finalName>
+        <!-- 打成jar包的名字 -->
+        <finalName>bridge</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
