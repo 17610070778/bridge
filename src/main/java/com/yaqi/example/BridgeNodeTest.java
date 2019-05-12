@@ -50,7 +50,7 @@ public class BridgeNodeTest {
                 .map(i -> {
                     // 人为制造异常
                     if(true){
-                        throw new RuntimeException("人为制造异常");
+                        int e = 1 / 0;
                     }
                     return i;
                 })
